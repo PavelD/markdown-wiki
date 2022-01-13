@@ -1,0 +1,29 @@
+{
+	"name": "PavelD/markdown-wiki",
+	"description": "An extension of cebe/markdown library for parsing markdown to wiki text",
+	"keywords": ["markdown", "wiki"],
+	"homepage": "https://github.com/PavelD/markdown-wiki#readme",
+	"type": "library",
+	"license": "MIT",
+	"authors": [
+		{
+			"name": "Pavel Dobes",
+			"email": "konference@lnx.cz",
+			"role": "Creator"
+		}
+	],
+	"support": {
+		"issues": "https://github.com/PavelD/markdown-wiki/issues",
+		"source": "https://github.com/PavelD/markdown-wiki"
+	},
+	"require": {
+		"php": ">=5.4.0",
+		"lib-pcre": "*",
+    "cebe/markdown": "1.2.1"
+	},
+	"autoload": {
+		"psr-4": {
+			"paveld\\markdownwiki\\": ""
+		}
+	}
+}
