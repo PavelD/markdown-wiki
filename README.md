@@ -3,7 +3,7 @@
 ## About
 Extension of the [Cebe](https://github.com/cebe)'s [Markdown](https://github.com/cebe/markdown) library for parsing Mrkdown into WikiText syntax.
 
-Will be used as backed library for future version of [MediaWiki](https://www.mediawiki.org) [Markdown](https://github.com/PavelD/mw-markdown) parser.
+It's used as backend library for [MediaWiki](https://www.mediawiki.org) [MarkdownWiki](https://github.com/PavelD/mw-markdown-wiki) parser.
 
 ## Features
 The parser render links and tables in wiki format.
