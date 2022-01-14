@@ -14,6 +14,8 @@ class MarkdownWiki extends \cebe\markdown\MarkdownExtra {
         consumeTemplate as protected consumeAAATemplate;
     }
 
+    use inline\MagicWordTrait;
+
     protected function renderLink($block) {
         if (isset($block['refkey'])) {
             if (($ref = $this->lookupReference($block['refkey'])) !== false) {
