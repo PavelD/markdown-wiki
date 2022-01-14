@@ -26,7 +26,7 @@ End of parsing is on the end of the template or on first empty line.
 
 Double underscored [behavior switches](https://www.mediawiki.org/wiki/Help:Magic_words#Behavior_switches) for MediaWiki parser has the same format as markdown bold text. To avoid issues with that words new format is introduced.
 
-`{{__NOTOC__}}` instread of simple `__NOTOC__`. The parser is removing curly brackets and magic word is appyed during wiki parsing.
+`{{__NOTOC__}}` instread of simple `__NOTOC__`. The markdown-wiki parser is removing curly brackets and magic word is applyed during wiki parsing.
 
 
 ## License
