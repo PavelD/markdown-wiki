@@ -35,8 +35,7 @@ trait MagicWordTrait
 
     protected function renderMagicWord($block)
     {
-        return $this->renderAbsy($block[1]);
+        return $block[1];
     }
 
-    abstract protected function renderAbsy($blocks);
 }
