@@ -1,5 +1,5 @@
 {
-    "name": "PavelD/markdown-wiki",
+    "name": "paveld/markdown-wiki",
     "description": "An extension of cebe/markdown library for parsing markdown to wiki text",
     "keywords": ["markdown", "wiki"],
     "homepage": "https://github.com/PavelD/markdown-wiki#readme",
