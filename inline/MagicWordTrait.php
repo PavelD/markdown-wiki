@@ -2,7 +2,7 @@
 /**
  * @copyright Copyright (c) 2022 Pavel Dobes
  * @license https://github.com/PavelD/markdown-wiki/blob/main/LICENSE
- * @link hhttps://github.com/PavelD/markdown-wiki#readme
+ * @link https://github.com/PavelD/markdown-wiki#readme
  */
 
 namespace paveld\markdownwiki\inline;
