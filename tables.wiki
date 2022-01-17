@@ -1,0 +1,302 @@
+=== Tables ===
+
+{|
+! First Header
+! Second Header
+|-
+| Content Cell
+| Content Cell
+|-
+| Content Cell
+| Content Cell
+|}
+
+{|
+! First Header
+! Second Header
+|-
+| Content Cell
+| Content Cell
+|-
+| Content Cell
+| Content Cell
+|}
+
+{|
+! Name
+! Description
+|-
+| Help
+| Display the help window.
+|-
+| Close
+| Closes a window
+|}
+
+{|
+! Name
+! Description
+|-
+| Help
+| <strong>Display the</strong> help window.
+|-
+| Close
+| <em>Closes</em> a window
+|}
+
+{|
+! Default-Align
+! style="text-align:left" | Left-Aligned
+! style="text-align:center" | Center Aligned
+! style="text-align:right" | Right Aligned
+|-
+| 1
+| style="text-align:left" | col 3 is
+| style="text-align:center" | some wordy text
+| style="text-align:right" | $1600
+|-
+| 2
+| style="text-align:left" | col 2 is
+| style="text-align:center" | centered
+| style="text-align:right" | $12
+|-
+| 3
+| style="text-align:left" | zebra stripes
+| style="text-align:center" | are neat
+| style="text-align:right" | $1
+|}
+
+{|
+! Simple
+! Table
+|-
+| 1
+| 2
+|-
+| 3
+| 4
+|}
+
+{|
+! Simple
+! Table
+|-
+| 1
+| 2
+|-
+| 3
+| 4
+|-
+| 3
+| 4     |
+|-
+| 3
+| 4    \
+|}
+
+Check https://github.com/erusev/parsedown/issues/184 for the following:
+
+{|
+! Foo
+! Bar
+! State
+|-
+| <code>Code | Pipe</code>
+| Broken
+| Blank
+|-
+| <code>Escaped Code \| Pipe</code>
+| Broken
+| Blank
+|-
+| Escaped | Pipe
+| Broken
+| Blank
+|-
+| Escaped \
+| Pipe
+| Broken
+| Blank
+|-
+| Escaped \
+| Pipe
+| Broken
+| Blank
+|}
+
+{|
+! style="text-align:left" | Simple
+! Table
+|-
+| style="text-align:left" | 3
+| 4
+|-
+| style="text-align:left" | 3
+| 4
+|-
+| style="text-align:left" | 5
+|}
+
+{|
+! Mixed
+! Table
+|-
+| 1
+| 2
+|-
+| 3
+| 4
+|}
+
+{|
+! Mixed
+! Table
+|-
+| 1
+| 2
+|-
+| 3
+| 4
+|}
+
+{|
+! Mixed
+! Table
+|-
+| 1
+| 2
+|-
+| 3
+| 4
+|}
+
+some text
+
+{|
+! single col
+|-
+| 1
+|-
+| 2
+|-
+| 3
+|}
+
+{|
+! Table
+! With
+! Empty
+! Cells
+|-
+| 
+| 
+| 
+| 
+|-
+| a
+| 
+| b
+| 
+|-
+| 
+| a
+| 
+| b
+|-
+| a
+| 
+| 
+| b
+|-
+| 
+| a
+| b
+| 
+|}
+
+{|
+! 
+|-
+| 
+|}
+
+{|
+! 
+! 
+|-
+| 
+| 
+|}
+
+{|
+! Table
+! Indentation
+|-
+| A
+| B
+|}
+
+{|
+! Table
+! Indentation
+|-
+| A
+| B
+|}
+
+{|
+! Table
+! Indentation
+|-
+| A
+| B
+|}
+
+<pre><code>| Table | Indentation |
+</code></pre>
+
+   | ----- | ---- |
+ | A     | B    |
+
+{|
+! style="text-align:left" | Table
+! Indentation
+|}
+
+<pre><code>| A     | B    |
+</code></pre>
+{|
+! Item
+! style="text-align:right" | Value
+|-
+| Computer
+| style="text-align:right" | $1600
+|-
+| Phone
+| style="text-align:right" | $12
+|-
+| Pipe
+| style="text-align:right" | $1
+|}
+
+{|
+! style="text-align:center" | a
+! style="text-align:center" | b
+! style="text-align:center" | c
+|-
+| style="text-align:center" | 1
+| style="text-align:center" | 2
+| style="text-align:center" | 3
+|}
+
+{|
+! style="text-align:left" | a
+! style="text-align:center" | b
+! style="text-align:left" | c
+! style="text-align:center" | d
+|-
+| style="text-align:left" | 1
+| style="text-align:center" | 2
+| style="text-align:left" | 3
+| style="text-align:center" | 4
+|}

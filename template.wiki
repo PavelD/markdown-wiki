@@ -1,0 +1,47 @@
+== Expected space after template ==
+
+{{Template Name
+|attribute 1=value 1
+|attribute 2=value 2
+|attribute 3=value 3
+}}
+
+{{Template Name
+|attribute 1=value 1
+|attribute 2=value 2
+|attribute 3=value 3
+}}
+
+{{Template Name
+|attribute 1=value 1
+}}
+
+Attribute 2: value 2
+
+=== Attribute 3: value 3 ===
+
+{{Template Name
+|attribute 1=value 1
+|attribute 2=value 2
+}}
+
+=== Attribute 3: value 3 ===
+
+{{Template Name
+|attribute 1=value 1: z
+|attribute 2=value 2: y
+|attribute 3=value 3: x
+}}
+
+== Expected no space between templates ==
+
+{{Template Name1
+|attribute 1=value 1
+|attribute 2=value 2
+|attribute 3=value 3
+}}
+{{Template Name2
+|attribute 1=value 1
+|attribute 2=value 2
+|attribute 3=value 3
+}}
