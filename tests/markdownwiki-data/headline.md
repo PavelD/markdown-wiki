@@ -24,9 +24,21 @@ par5
 
 #### a h4 heading ########
 
+##### h5
+
 ###### h6
 
 ####### h7
+
+######## h8
+
+# H1 with # #
+
+## H2 with ## ###
+
+### H3 with ## ##
+
+# # H1 surrounded # ##
 
 <a name="example"></a>
 head

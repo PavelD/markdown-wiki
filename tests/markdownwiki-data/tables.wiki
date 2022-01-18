@@ -252,19 +252,20 @@ some text
 | B
 |}
 
-<pre><code>| Table | Indentation |
-</code></pre>
+<syntaxhighlight>| Table | Indentation |
+</syntaxhighlight>
 
-   | ----- | ---- |
- | A     | B    |
+| ----- | ---- |
+| A     | B    |
 
 {|
 ! style="text-align:left" | Table
 ! Indentation
 |}
 
-<pre><code>| A     | B    |
-</code></pre>
+<syntaxhighlight>| A     | B    |
+</syntaxhighlight>
+
 {|
 ! Item
 ! style="text-align:right" | Value
