@@ -53,6 +53,34 @@ class MarkdownWiki extends MarkdownExtra
         return [$block, $current];
     }
 
+    protected function consumeHtml($lines, $current)
+    {
+        $consumed = parent::consumeHtml($lines, $current);
+        if (substr($consumed[0]['content'], 0, 5) === '<pre>') {
+            $consumed[0][0] = 'pre';
+        }
+        return $consumed;
+    }
+
+    protected function renderPre($block)
+    {
+        $content = substr($block['content'], 5, -6);
+        $content = htmlspecialchars($content, ENT_NOQUOTES | ENT_SUBSTITUTE, 'UTF-8');
+        $lines = explode("\n", $content);
+        if ($lines[0] == "") {
+            array_shift($lines);
+        }
+        if (end($lines) == "") {
+            array_pop($lines);
+        }
+        foreach ($lines as $k => $v) {
+            $lines[$k] = ' ' . $v;
+        }
+
+        return "\n\n" . implode("\n", $lines) . "\n\n";
+
+    }
+
     protected function consumeParagraph($lines, $current)
     {
         $mylines = array_map('trim', $lines);
@@ -73,6 +101,12 @@ class MarkdownWiki extends MarkdownExtra
 
     }
 
+    protected function renderEmail($block)
+    {
+        $email = htmlspecialchars($block[1], ENT_NOQUOTES | ENT_SUBSTITUTE, 'UTF-8');
+        return "[mailto:$email $email]";
+    }
+
     protected function renderHeadline($block)
     {
         parent::renderHeadline($block);
@@ -86,6 +120,11 @@ class MarkdownWiki extends MarkdownExtra
         }
 
         return "\n\n$tag " . $prefix . $this->renderAbsy($block['content']) . " $tag\n\n";
+    }
+
+    protected function renderHr($block)
+    {
+        return "\n\n----\n\n";
     }
 
     protected function renderLink($block)
@@ -103,7 +142,8 @@ class MarkdownWiki extends MarkdownExtra
 
         $external = (bool)preg_match('#^[a-z]+://#i', $block['url']);
         if ($external) {
-            return '[' . $block['url'] . ' ' . $this->renderAbsy($block['text']) . ']';
+            $url = htmlspecialchars($block['url'], ENT_COMPAT | ENT_HTML401, 'UTF-8');
+            return '[' . $url . ' ' . $this->renderAbsy($block['text']) . ']';
         } else {
             return '[[' . $block['url'] . '|' . $this->renderAbsy($block['text']) . ']]';
         }
@@ -140,6 +180,15 @@ class MarkdownWiki extends MarkdownExtra
     protected function composeTable($head, $body)
     {
         return "{|\n" . $head . $body . "|}\n\n";
+    }
+
+    protected function renderUrl($block)
+    {
+        $url = htmlspecialchars($block[1], ENT_COMPAT | ENT_HTML401, 'UTF-8');
+        $decodedUrl = urldecode($block[1]);
+        $secureUrlText = preg_match('//u', $decodedUrl) ? $decodedUrl : $block[1];
+        $text = htmlspecialchars($secureUrlText, ENT_NOQUOTES | ENT_SUBSTITUTE, 'UTF-8');
+        return "[$url $text]";
     }
 
 }

@@ -1,0 +1,10 @@
+link [http://example.com/a ref1]
+
+<ul>
+<li>item 1 [http://example.com/b ref2]</li>
+<li>item 2</li>
+</ul>
+<ul>
+<li>item 1 [http://example.com/b ref2]</li>
+<li>item 2</li>
+</ul>

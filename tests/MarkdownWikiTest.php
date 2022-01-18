@@ -72,9 +72,9 @@ class MarkdownWikiTest extends BaseMarkdownTest
         $utfEncodedUrl = "http://example.com/" . urlencode($utfText);
         $eucEncodedUrl = "http://example.com/" . urlencode(mb_convert_encoding($utfText, 'EUC-JP', 'UTF-8'));
 
-        $this->assertStringEndsWith(">{$utfNaturalUrl}</a>", $parser->parseParagraph("<{$utfNaturalUrl}>"), "Natural UTF-8 URL needs no conversion.");
-        $this->assertStringEndsWith(">{$utfNaturalUrl}</a>", $parser->parseParagraph("<{$utfEncodedUrl}>"), "Encoded UTF-8 URL will be converted to readable format.");
-        $this->assertStringEndsWith(">{$eucEncodedUrl}</a>", $parser->parseParagraph("<{$eucEncodedUrl}>"), "Non UTF-8 URL should never be converted.");
+        $this->assertStringEndsWith(" {$utfNaturalUrl}]", $parser->parseParagraph("<{$utfNaturalUrl}>"), "Natural UTF-8 URL needs no conversion.");
+        $this->assertStringEndsWith(" {$utfNaturalUrl}]", $parser->parseParagraph("<{$utfEncodedUrl}>"), "Encoded UTF-8 URL will be converted to readable format.");
+        $this->assertStringEndsWith(" {$eucEncodedUrl}]", $parser->parseParagraph("<{$eucEncodedUrl}>"), "Non UTF-8 URL should never be converted.");
         // See: \cebe\markdown\inline\LinkTrait::renderUrl
     }
 

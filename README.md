@@ -8,9 +8,28 @@ It's used as backend library for [MediaWiki](https://www.mediawiki.org) [Markdow
 ## Features
 The parser render links and tables in wiki format.
 
+### Supported elements
+
+#### Inline elemets
+* bold
+* italc
+* code highlit
+* links
+* images
+
+#### Block elements
+* blockquote
+* headlines
+* horizontal ruler
+* ordered and unordered lists
+* paragraphs
+* preformatted text
+* tables
+
 ### Extra structures
-#### Template
+#### Templates
 Example:
+
 ```
 ---
 template: temaplate name

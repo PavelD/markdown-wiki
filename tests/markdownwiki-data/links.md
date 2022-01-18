@@ -2,6 +2,8 @@ Go search on <http://google.com>!
 
 link should be url decoded: <http://en.wikipedia.org/wiki/Mase_%28disambiguation%29>
 
+link should be url decoded: <http://www.example.com/url%20with%20spaces>
+
 Brackets in url and backslashes in links:
 
 About port info on wiki: [port](http://en.wikipedia.org/wiki/Port_(computer_networking))
