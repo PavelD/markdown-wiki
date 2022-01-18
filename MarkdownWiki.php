@@ -35,6 +35,59 @@ class MarkdownWiki extends MarkdownExtra
         return $text;
     }
 
+    protected function consumeHeadline($lines, $current)
+    {
+        if ($lines[$current][0] !== '#') {
+            return parent::consumeHeadline($lines, $current);
+        }
+        // ATX headline
+        $level = 1;
+        while (isset($lines[$current][$level]) && $lines[$current][$level] === '#') {
+            $level++;
+        }
+        $block = [
+            'headline',
+            'content' => $this->parseInline(trim(trim($lines[$current], "#"))),
+            'level' => $level,
+        ];
+        return [$block, $current];
+    }
+
+    protected function consumeParagraph($lines, $current)
+    {
+        $mylines = array_map('trim', $lines);
+        return parent::consumeParagraph($mylines, $current);
+    }
+
+    protected function renderCode($block)
+    {
+        $lang = '';
+        if (isset($block['attributes'])) {
+            $attribute = trim(substr($block['attributes'], 1));
+            if (!empty($attribute)) {
+                $lang = ' lang="' . $attribute . '"';
+            }
+        }
+
+        return "<syntaxhighlight{$lang}>{$block['content']}\n</syntaxhighlight>\n\n";
+
+    }
+
+    protected function renderHeadline($block)
+    {
+        parent::renderHeadline($block);
+        $tag = substr(str_repeat("=", $block['level'] + 1), 0, 6);
+        $prefix = '';
+        for ($i = 5; $i < $block['level']; $i++) {
+            $prefix .= '#';
+        }
+        if ($prefix != '') {
+            $prefix .= ' ';
+        }
+
+        return "\n\n$tag " . $prefix . $this->renderAbsy($block['content']) . " $tag\n\n";
+    }
+
     protected function renderLink($block)
     {
         if (isset($block['refkey'])) {
@@ -54,6 +107,11 @@ class MarkdownWiki extends MarkdownExtra
         } else {
             return '[[' . $block['url'] . '|' . $this->renderAbsy($block['text']) . ']]';
         }
+    }
+
+    protected function renderParagraph($block)
+    {
+        return "\n\n" . $this->renderAbsy($block['content']) . "\n\n";
     }
 
     protected function renderTable($block)
@@ -82,17 +140,6 @@ class MarkdownWiki extends MarkdownExtra
     protected function composeTable($head, $body)
     {
         return "{|\n" . $head . $body . "|}\n\n";
-    }
-
-    protected function renderParagraph($block)
-    {
-        return "\n\n" . $this->renderAbsy($block['content']) . "\n\n";
-    }
-
-    protected function renderHeadline($block)
-    {
-        $tag = substr(str_repeat("=", $block['level'] + 1), 0, 6);
-        return "\n\n$tag " . $this->renderAbsy($block['content']) . " $tag\n\n";
     }
 
 }

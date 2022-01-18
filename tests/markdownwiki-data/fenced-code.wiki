@@ -1,0 +1,16 @@
+<syntaxhighlight>
+fenced code block
+</syntaxhighlight>
+
+<syntaxhighlight>fenced with tildes
+</syntaxhighlight>
+
+<syntaxhighlight>long fence
+
+```
+code about code
+```
+</syntaxhighlight>
+
+<syntaxhighlight lang="myLanguage">fenced code block
+</syntaxhighlight>
