@@ -72,9 +72,9 @@ class MarkdownWikiTest extends BaseMarkdownTest
         $utfEncodedUrl = "http://example.com/" . urlencode($utfText);
         $eucEncodedUrl = "http://example.com/" . urlencode(mb_convert_encoding($utfText, 'EUC-JP', 'UTF-8'));
 
-        $this->assertStringEndsWith(">{$utfNaturalUrl}</a>", $parser->parseParagraph("<{$utfNaturalUrl}>"), "Natural UTF-8 URL needs no conversion.");
-        $this->assertStringEndsWith(">{$utfNaturalUrl}</a>", $parser->parseParagraph("<{$utfEncodedUrl}>"), "Encoded UTF-8 URL will be converted to readable format.");
-        $this->assertStringEndsWith(">{$eucEncodedUrl}</a>", $parser->parseParagraph("<{$eucEncodedUrl}>"), "Non UTF-8 URL should never be converted.");
+        $this->assertStringEndsWith(" {$utfNaturalUrl}]", $parser->parseParagraph("<{$utfNaturalUrl}>"), "Natural UTF-8 URL needs no conversion.");
+        $this->assertStringEndsWith(" {$utfNaturalUrl}]", $parser->parseParagraph("<{$utfEncodedUrl}>"), "Encoded UTF-8 URL will be converted to readable format.");
+        $this->assertStringEndsWith(" {$eucEncodedUrl}]", $parser->parseParagraph("<{$eucEncodedUrl}>"), "Non UTF-8 URL should never be converted.");
         // See: \cebe\markdown\inline\LinkTrait::renderUrl
     }
 
@@ -92,5 +92,40 @@ class MarkdownWikiTest extends BaseMarkdownTest
             ["a\n\r\n\rb", "a\n\nb", "a\n\nb"], // Acorn BBC and RISC OS spooled text output :)
             ["a\r\n\r\nb", "a\n\nb", "a\n\nb"],
         ];
+    }
+
+    public function testDisableParsingRulesAssigment()
+    {
+        $m = $this->createMarkdown();
+        $this->assertEquals(true, $m->disableParsingRule('aaa')->isDisabledParsionRule('aaa'));
+        $this->assertEquals(true, $m->disableParsingRule('bbb')->isDisabledParsionRule('bbb'));
+        $this->assertEquals(true, $m->isDisabledParsionRule('aaa'));
+    }
+
+    public function testParseDisabeInline()
+    {
+        $this->assertEquals("[index](http://www.example.com/index.php)",
+            $this->createMarkdown()->disableParsingRule('parseLink')->parse("[index](http://www.example.com/index.php)"));
+        $this->assertEquals("[http://www.example.com/index.php index]",
+            $this->createMarkdown()->disableParsingRule('ol')->parse("[index](http://www.example.com/index.php)"));
+    }
+
+    public function testParseDisabeBlock()
+    {
+        $this->assertEquals("----",
+            $this->createMarkdown()->disableParsingRule('parseLink')->parse("------"));
+        $this->assertEquals("---",
+            $this->createMarkdown()->disableParsingRule('ahr')->disableParsingRule('hr')->parse("---"));
+
+        $this->assertEquals("<ul>\n<li>a</li>\n<li>b</li>\n<li>c</li>\n</ul>",
+            $this->createMarkdown()->disableParsingRule('parseLink')->parse("\n* a\n* b\n* c\n"));
+        $this->assertEquals("<em> a\n</em> b\n* c",
+            $this->createMarkdown()->disableParsingRule('ul')->disableParsingRule('bul')->parse("\n* a\n* b\n* c\n"));
+    }
+
+    public function testHeadline() {
+        $this->assertEquals("# h1 headline",
+            $this->createMarkdown()->disableParsingRule('headline')->parse("# h1 headline\n"));
+
     }
 }

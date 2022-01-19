@@ -20,7 +20,7 @@
         "cebe/markdown": "1.2.1",
         "lib-pcre": "*",
         "ext-mbstring": "*",
-        "php": ">=7.4.0"
+        "php": ">=5.4.0"
     },
     "require-dev": {
         "ext-curl": "*",

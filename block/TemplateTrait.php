@@ -12,7 +12,6 @@ namespace paveld\markdownwiki\block;
  */
 trait TemplateTrait
 {
-
     /**
      * identify a line as the beginning of a template block.
      *
@@ -48,16 +47,13 @@ trait TemplateTrait
             'attributes' => array(),
             'empty_line' => false,
         ];
-        $line = rtrim($lines[$current]);
 
-        // detect language and fence length (can be more than 3 dashes)
-        $fence = substr($line, 0, $pos = strrpos($line, '-') + 1);
         list(, $template_name) = preg_split("/:[\s,]*/", $lines[$current + 1], 2);
         if (!empty($template_name)) {
             $block['template_name'] = $template_name;
         }
 
-        // consume all lines until ---
+        // consume all lines until : is not present
         for ($i = $current + 2, $count = count($lines); $i < $count; $i++) {
             if (strpos($lines[$i], ':') !== false) {
                 list($key, $value) = preg_split("/:[\s,]*/", $lines[$i], 2);
@@ -68,15 +64,6 @@ trait TemplateTrait
                 }
                 break;
             }
-            //if ((rtrim($line = $lines[$i]) !== $fence )
-            //    && (strpos($line, ':') !== false)
-            //) {
-            //    list($key,$value) = preg_split("/:[\s,]*/", $line, 2);
-            //    $block['attributes'][strtolower($key)] = $value;
-            //} else {
-            //    // stop consuming when code block is over
-            //   break;
-            //}
         }
 
         return [$block, $i];

@@ -1,6 +1,8 @@
-Go search on <a href="http://google.com">http://google.com</a>!
+Go search on [http://google.com http://google.com]!
 
-link should be url decoded: <a href="http://en.wikipedia.org/wiki/Mase_%28disambiguation%29">http://en.wikipedia.org/wiki/Mase_(disambiguation)</a>
+link should be url decoded: [http://en.wikipedia.org/wiki/Mase_%28disambiguation%29 http://en.wikipedia.org/wiki/Mase_(disambiguation)]
+
+link should be url decoded: [http://www.example.com/url%20with%20spaces http://www.example.com/url with spaces]
 
 Brackets in url and backslashes in links:
 
