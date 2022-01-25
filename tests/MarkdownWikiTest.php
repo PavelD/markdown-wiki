@@ -97,6 +97,8 @@ class MarkdownWikiTest extends BaseMarkdownTest
     public function testDisableParsingRulesAssigment()
     {
         $m = $this->createMarkdown();
+        $this->assertEquals(false, $m->isDisabledParsionRule('aaa'));
+        $this->assertEquals(false, $m->isDisabledParsionRule('bbb'));
         $this->assertEquals(true, $m->disableParsingRule('aaa')->isDisabledParsionRule('aaa'));
         $this->assertEquals(true, $m->disableParsingRule('bbb')->isDisabledParsionRule('bbb'));
         $this->assertEquals(true, $m->isDisabledParsionRule('aaa'));

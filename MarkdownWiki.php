@@ -94,34 +94,15 @@ class MarkdownWiki extends MarkdownExtra
         return $consumed;
     }
 
-    protected function renderPre($block)
-    {
-        $content = substr($block['content'], 5, -6);
-        $content = htmlspecialchars($content, ENT_NOQUOTES | ENT_SUBSTITUTE, 'UTF-8');
-        $lines = explode("\n", $content);
-        if ($lines[0] == "") {
-            array_shift($lines);
-        }
-        if (end($lines) == "") {
-            array_pop($lines);
-        }
-        foreach ($lines as $k => $v) {
-            $lines[$k] = ' ' . $v;
-        }
-
-        return "\n\n" . implode("\n", $lines) . "\n\n";
-
-    }
-
     protected function consumeParagraph($lines, $current)
     {
         $content = [];
         for ($i = $current, $count = count($lines); $i < $count; $i++) {
-            $line = ltrim($lines[$i]);
+            $line = $lines[$i];
 
             // a list may break a paragraph when it is inside of a list - ol
             if (isset($this->context[1]) && $this->context[1] === 'list' && !ctype_alpha($line[0]) &&
-                    $this->identifyOl($line) && !$this->isDisabledParsionRule('ol')) {
+                $this->identifyOl($line) && !$this->isDisabledParsionRule('ol')) {
                 break;
             }
             // a list may break a paragraph when it is inside of a list - ul
@@ -141,12 +122,12 @@ class MarkdownWiki extends MarkdownExtra
                 // e.g. <img src="file.jpg"
                 //           alt="some alt aligned with src attribute" title="some text" />
                 if (preg_match('~<\w+([^>]+)$~s', implode("\n", $content))) {
-                    $content[] = $line;
+                    $content[] = ltrim($line);
                 } else {
                     break;
                 }
             } else {
-                $content[] = $line;
+                $content[] = ltrim($line);
             }
         }
         $block = [
@@ -226,6 +207,25 @@ class MarkdownWiki extends MarkdownExtra
     protected function renderParagraph($block)
     {
         return "\n\n" . $this->renderAbsy($block['content']) . "\n\n";
+    }
+
+    protected function renderPre($block)
+    {
+        $content = substr($block['content'], 5, -6);
+        $content = htmlspecialchars($content, ENT_NOQUOTES | ENT_SUBSTITUTE, 'UTF-8');
+        $lines = explode("\n", $content);
+        if ($lines[0] == "") {
+            array_shift($lines);
+        }
+        if (end($lines) == "") {
+            array_pop($lines);
+        }
+        foreach ($lines as $k => $v) {
+            $lines[$k] = ' ' . $v;
+        }
+
+        return "\n\n" . implode("\n", $lines) . "\n\n";
+
     }
 
     protected function renderTable($block)
