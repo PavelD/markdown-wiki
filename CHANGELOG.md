@@ -1,7 +1,7 @@
 CHANGELOG
 =========
 
-Version 0.3.1 on 19 Jan. 2022
+Version 0.3.1 on 25 Jan. 2022
 -----------------------------
 * fix bug in pragraph parsing
 
