@@ -1,7 +1,11 @@
 CHANGELOG
 =========
 
-Version 0.2.0 on 17 Jan 2022
+Version 0.3.0 on 19 Jan. 2022
+-----------------------------
+* add possibility to remove some rules from parsing
+
+Version 0.2.0 on 17 Jan. 2022
 ----------------------------
 * move paragraph parsing from html -> wikitext
 * move headline parsing from html -> wikitext. Top level is parsed as h2 ( == Headline ==) etc., as h1 is reserved for page name.
