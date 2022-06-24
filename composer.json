@@ -31,4 +31,7 @@
             "paveld\\markdownwiki\\": ""
         }
     }
+    "scripts": {
+        "test": "vendor/bin/phpunit"
+    }
 }
