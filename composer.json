@@ -30,7 +30,7 @@
         "psr-4": {
             "paveld\\markdownwiki\\": ""
         }
-    }
+    },
     "scripts": {
         "test": "vendor/bin/phpunit"
     }
