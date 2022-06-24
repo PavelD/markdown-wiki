@@ -17,7 +17,7 @@
         "source": "https://github.com/PavelD/markdown-wiki"
     },
     "require": {
-        "cebe/markdown": "1.2.1",
+        "cebe/markdown": "1.2.*",
         "lib-pcre": "*",
         "ext-mbstring": "*",
         "php": ">=5.4.0"
